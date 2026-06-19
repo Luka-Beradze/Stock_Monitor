@@ -1,64 +1,63 @@
-## Simple Python Stock Monitor
 
-A lightweight, customizable Python script that monitors real-time stock prices using Yahoo Finance and sends native desktop notifications when stocks hit your specific high or low target prices.
+## Stock Price Monitor (GUI Edition)
+
+A lightweight, fully interactive desktop application that monitors real-time stock prices using Yahoo Finance. Unlike the CLI version, this app features a clean Graphical User Interface (GUI) where you can dynamically add, edit, and remove stock targets on the fly without ever touching the code.
+
+*(Insert a screenshot of your app here: `![App Screenshot](link_to_image.png)`)*
 
 ### Features
-* **Track Multiple Stocks:** Add as many tickers as you want.
+* **Interactive UI:** Add, update, or remove stocks and price targets directly from the app.
+* **No Code Editing Required:** Manage your portfolio entirely through the graphical interface.
 * **Dual-Direction Alerts:** Set alerts for when a stock *drops below* a certain price, *rises above* a certain price, or both.
-* **Native Desktop Notifications:** Pops up directly on Windows, Mac, or Linux without needing a third-party app.
-* **Silent Monitoring:** Option to just print prices to the terminal without triggering alarms.
-* **Crash Resistant:** Safely handles dropped internet connections or missing data from Yahoo Finance.
+* **Native Desktop Notifications:** Pops up directly on Windows/Mac without needing a third-party app.
+* **Live Activity Log:** Real-time, auto-scrolling log of current prices directly inside the application window.
+* **Background Threading:** The app runs smoothly and won't freeze while pulling data from the internet.
 
-### Prerequisites
-You will need standard **Python 3.x** installed on your computer. 
-*(Note: Ensure you are using standard Windows Python, not MSYS2/MinGW Python).*
+### How to Use
 
-### Installation
+If you downloaded the pre-built `.exe` file, simply double-click it to run! No installation required.
 
-1. **Clone the repository** (or download the script directly):
+1. **Add a Stock:** Type the Ticker (e.g., `SPCX`, `AAPL`), set your Low Target and High Target, and click **Add / Update**.
+2. **Monitor Only:** If you just want to watch the price without getting an alarm, leave the targets at `0`.
+3. **Start:** Click **▶ START MONITORING**. The app will fetch live prices every 15 seconds.
+4. **Alerts:** You can minimize the app. If a price boundary is crossed, a native Windows/Mac notification will pop up on your screen.
+
+### Running from Source (For Developers)
+
+If you prefer to run the raw Python script instead of the `.exe`:
+
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Luka-Beradze/Stock_Monitor.git
-   cd Stock_Monitor
+   git clone 
+   cd 
+   git checkout gui-branch  # (If applicable)
    ```
 
-2. **Install required libraries:**
+2. **Install required dependencies:**
    ```bash
    pip install yfinance plyer
    ```
-   *(Windows users can use `py -m pip install yfinance plyer` if `pip` is not recognized).*
 
-### Configuration
+3. **Run the app:**
+   ```bash
+   python program.py
+   ```
 
-Open the script in any text editor and look for the `STOCKS_TO_MONITOR` list. 
+### Building the `.exe` Yourself
 
-The system uses a **3-tuple format**: `("TICKER", LOW_TARGET, HIGH_TARGET)`
+Want to compile the `.exe` file yourself? We use `PyInstaller` to package the app.
 
-* Set a target to `0` if you do not want an alarm for that direction.
-* Set both targets to `0` if you just want to monitor the price silently in the terminal.
+1. Install PyInstaller:
+   ```bash
+   pip install pyinstaller
+   ```
+2. Run the build command inside the project folder:
+   ```bash
+   python -m PyInstaller --noconsole --onefile --hidden-import plyer.platforms.win.notification program.py
+   ```
+   *(Note for Windows users: Use `py` instead of `python` if your system paths are not set up).*
 
-**Examples:**
-```python
-STOCKS_TO_MONITOR = [
-    ("XXXX", 0, 0),       # Monitoring only, no alarms
-    ("YYYY", 20, 0),      # Alarm only if price drops <= 20
-    ("ZZZZ", 0, 150),     # Alarm only if price rises >= 150
-    ("WWW", 800, 1000),  # Alarm if price drops <= 800 OR rises >= 1000
-]
-```
-
-You can also adjust the `CHECK_INTERVAL` variable to change how often the app refreshes (default is 15-30 seconds recommended to avoid IP bans from Yahoo).
-
-### Usage
-
-Run the script from your terminal:
-```bash
-python main.py
-```
-*(Or `py main.py` on Windows)*
-
-The terminal will print out the current prices at your chosen interval. If a target is hit, a desktop notification will appear summarizing which stock triggered the alarm and why (📉 Drop or 📈 Rise).
-
-To stop the script, press `Ctrl + C` in your terminal.
+3. Once finished, navigate to the newly created `dist` folder. Your standalone `program.exe` will be waiting inside!
 
 ---
-*Disclaimer: This is a personal tool. Data is pulled via the `yfinance` library, which relies on Yahoo Finance's publicly available APIs. Use at your own discretion; not intended for high-frequency algorithmic trading.*
+*Disclaimer: Data is pulled via the `yfinance` library, which relies on Yahoo Finance's publicly available APIs. Use at your own discretion; not intended for high-frequency algorithmic trading.*
