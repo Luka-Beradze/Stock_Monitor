@@ -17,8 +17,8 @@ You will need standard **Python 3.x** installed on your computer.
 
 1. **Clone the repository** (or download the script directly):
    ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-   cd YOUR-REPO-NAME
+   git clone https://github.com/Luka-Beradze/Stock_Monitor.git
+   cd Stock_Monitor
    ```
 
 2. **Install required libraries:**
