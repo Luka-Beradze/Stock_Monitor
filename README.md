@@ -28,7 +28,7 @@ If you prefer to run the raw Python script instead of the `.exe`:
 
 1. **Clone the Branch.**
 
-   1.5. `git checkout gui-branch  # (If applicable)`
+   1.1. `git checkout gui-branch  # (If applicable)`
 
 2. **Install required dependencies:**
    ```bash
