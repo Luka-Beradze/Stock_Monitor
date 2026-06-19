@@ -3,7 +3,7 @@
 
 A lightweight, fully interactive desktop application that monitors real-time stock prices using Yahoo Finance. Unlike the CLI version, this app features a clean Graphical User Interface (GUI) where you can dynamically add, edit, and remove stock targets on the fly without ever touching the code.
 
-*(Insert a screenshot of your app here: `![App Screenshot](link_to_image.png)`)*
+*<img width="598" height="673" alt="image" src="https://github.com/user-attachments/assets/ff720858-3b23-4e34-8c04-8b5c44526b09" />*
 
 ### Features
 * **Interactive UI:** Add, update, or remove stocks and price targets directly from the app.
@@ -26,12 +26,9 @@ If you downloaded the pre-built `.exe` file, simply double-click it to run! No i
 
 If you prefer to run the raw Python script instead of the `.exe`:
 
-1. **Clone the repository:**
-   ```bash
-   git clone 
-   cd 
-   git checkout gui-branch  # (If applicable)
-   ```
+1. **Clone the Branch.**
+
+   1.5. `git checkout gui-branch  # (If applicable)`
 
 2. **Install required dependencies:**
    ```bash
